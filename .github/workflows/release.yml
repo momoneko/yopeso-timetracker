@@ -1,5 +1,7 @@
 name: Build and Release Chrome Extension
 
+permissions:
+  contents: write
 on:
   push:
     tags:
