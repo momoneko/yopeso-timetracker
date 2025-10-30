@@ -2,7 +2,7 @@
 
 ## Installation & Usage
 
-### 1. Build the Extension
+### 1. Build the Extension (for developers)
 
 Open a terminal in the `chrome-extension` directory and run:
 
@@ -11,12 +11,18 @@ yarn install
 yarn build
 ```
 
-### 2. Load the Extension in Chrome
+### 2. Download the Extension from GitHub Releases (for users)
+
+Go to the [Releases page](https://github.com/your-username/your-repo/releases) and download the latest `chrome-extension.zip` file.
+
+Unzip the file to a folder on your computer.
+
+### 3. Load the Extension in Chrome
 
 1. Open Chrome and go to `chrome://extensions`.
 2. Enable **Developer mode** (toggle in the top right).
 3. Click **Load unpacked**.
-4. Select the `dist` folder inside your `chrome-extension` directory.
+4. Select the folder where you unzipped the extension files (or the `dist` folder if you built it yourself).
 
 ### 3. Using the Extension
 
@@ -26,8 +32,8 @@ yarn build
 
 ### 4. Updating the Extension
 
-- After making code or asset changes, run `yarn build` again.
-- Reload the extension in `chrome://extensions` by clicking the **Reload** button on your extension card.
+If a new release is published, download the latest zip from the Releases page and repeat the installation steps above.
+If you are developing, after making code or asset changes, run `yarn build` again and reload the extension in `chrome://extensions` by clicking the **Reload** button on your extension card.
 
 ### 5. Troubleshooting
 
@@ -43,5 +49,5 @@ yarn build
 
 **Requirements:**
 
-- Chrome browser
-- Node.js & Yarn
+Chrome browser
+(For developers) Node.js & Yarn
