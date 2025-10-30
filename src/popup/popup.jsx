@@ -158,7 +158,15 @@ export default function Popup() {
       <h2>Time Tracking Filler</h2>
       {!isPortalTab ? (
         <div style={{ color: '#d32f2f', fontWeight: 'bold', marginTop: 24 }}>
-          Please navigate to <span style={{ color: '#1976d2' }}>portal.yopeso.com</span> to use this extension.
+          Please navigate to{' '}
+          <a
+            href="https://portal.yopeso.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#1976d2', textDecoration: 'underline' }}
+          >
+            portal.yopeso.com
+          </a>{' '}to use this extension.
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
