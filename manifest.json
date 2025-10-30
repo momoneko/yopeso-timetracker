@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Time Tracking Filler",
+  "version": "1.0",
+  "description": "Fill in time tracking via API calls to portal.yopeso.com.",
+  "permissions": ["cookies", "activeTab", "scripting"],
+  "host_permissions": ["https://portal.yopeso.com/*"],
+  "action": {
+    "default_popup": "src/popup/index.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  }
+}
