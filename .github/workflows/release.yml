@@ -17,10 +17,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "18"
+          cache: "yarn"
       - name: Install dependencies
-        run: npm install
+        run: yarn install --frozen-lockfile
       - name: Build extension
-        run: npm run build
+        run: yarn build
       - name: Zip extension
         run: cd dist && zip -r ../chrome-extension.zip .
       - name: Create Release
