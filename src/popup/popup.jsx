@@ -77,6 +77,7 @@ export default function Popup() {
   const [taskId, setTaskId] = useState('');
   const [note, setNote] = useState('');
   const [status, setStatus] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Load note for current taskId
   React.useEffect(() => {
@@ -118,6 +119,8 @@ export default function Popup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
+    setIsSubmitting(true);
     setStatus('Submitting...');
     try {
       // Save note for this taskId
@@ -151,6 +154,7 @@ export default function Popup() {
     } catch (err) {
       setStatus('Error: ' + err.message);
     }
+    setIsSubmitting(false);
   };
 
   return (
@@ -211,7 +215,7 @@ export default function Popup() {
             }}
           />
           <br />
-          <button type="submit" style={{ width: '100%', padding: '8px', background: '#1976d2', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Submit</button>
+          <button type="submit" disabled={isSubmitting} style={{ width: '100%', padding: '8px', background: isSubmitting ? '#aaa' : '#1976d2', color: '#fff', border: 'none', borderRadius: '4px', cursor: isSubmitting ? 'not-allowed' : 'pointer' }}>Submit</button>
         </form>
       )}
       <div style={{ marginTop: 12, color: '#d32f2f' }}>{status}</div>
