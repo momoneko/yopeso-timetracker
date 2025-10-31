@@ -22,7 +22,7 @@ jobs:
       - name: Build extension
         run: npm run build
       - name: Zip extension
-        run: zip -r chrome-extension.zip public/ src/ manifest.json
+        run: cd dist && zip -r ../chrome-extension.zip .
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
