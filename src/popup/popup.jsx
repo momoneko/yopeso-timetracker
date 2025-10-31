@@ -78,6 +78,13 @@ export default function Popup() {
   const [note, setNote] = useState('');
   const [status, setStatus] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [recentTasks, setRecentTasks] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('ttf_recent_tasks') || '[]');
+    } catch {
+      return [];
+    }
+  });
 
   // Load note for current taskId
   React.useEffect(() => {
@@ -151,6 +158,14 @@ export default function Popup() {
         }
       }
       setStatus(`Submitted: ${successCount} success, ${failCount} failed.`);
+      // Add to recent tasks if successful
+      if (successCount > 0 && taskId) {
+        setRecentTasks(prev => {
+          const updated = [taskId, ...prev.filter(t => t !== taskId)].slice(0, 5);
+          localStorage.setItem('ttf_recent_tasks', JSON.stringify(updated));
+          return updated;
+        });
+      }
     } catch (err) {
       setStatus('Error: ' + err.message);
     }
@@ -219,6 +234,25 @@ export default function Popup() {
         </form>
       )}
       <div style={{ marginTop: 12, color: '#d32f2f' }}>{status}</div>
+      {recentTasks.length > 0 && (
+        <div style={{ marginTop: 18 }}>
+          <div style={{ fontWeight: 'bold', marginBottom: 6 }}>Recently Submitted Tasks:</div>
+          <ul style={{ paddingLeft: 18, margin: 0 }}>
+            {recentTasks.map(task => (
+              <li key={task} style={{ marginBottom: 2 }}>
+                <a
+                  href={`https://portal.yopeso.com/task/${task}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#1976d2', textDecoration: 'underline', fontSize: 13 }}
+                >
+                  Task #{task}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
