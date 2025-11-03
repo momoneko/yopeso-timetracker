@@ -13,7 +13,7 @@ yarn build
 
 ### 2. Download the Extension from GitHub Releases (for users)
 
-Go to the [Releases page](https://github.com/your-username/your-repo/releases) and download the latest `chrome-extension.zip` file.
+Go to the [Releases page](https://github.com/momoneko/yopeso-timetracker/releases) and download the latest `chrome-extension.zip` file.
 
 Unzip the file to a folder on your computer.
 
